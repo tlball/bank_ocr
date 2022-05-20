@@ -11,8 +11,21 @@ module BankOCR
       @entry_rows = entry_rows
     end
 
+    def to_i
+      input_characters = parse_entry_rows
+
+      # TODO: print out the `#.to_i` for each input_character
+    end
+
     def valid?
       false
+    end
+
+    private
+
+    def parse_entry_rows
+      # TODO: read through each row to create 9 character matrices, and turn those
+      # into an array of InputCharacters
     end
   end
 end

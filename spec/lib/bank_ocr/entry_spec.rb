@@ -30,6 +30,12 @@ describe BankOCR::Entry do
       .to raise_error(BankOCR::ArgumentError, 'entry_rows must be an Array')
   end
 
+  described 'to_i' do
+    it 'validates the number of rows'
+    it 'validates the last row is blank'
+    it 'parses the rows into 9 InputCharacters'
+  end
+
   describe 'valid?' do
     it 'consists of 9 input characters'
     it 'has an empty last line'
