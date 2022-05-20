@@ -6,6 +6,7 @@ module BankOCR
   class InputCharacter
     CHAR_WIDTH  = 3
     CHAR_HEIGHT = 3
+    VALID_CHARS = [' ', '_', '|'].freeze
 
     attr_reader :character_matrix
 
@@ -19,7 +20,7 @@ module BankOCR
       return false if character_matrix.size != CHAR_HEIGHT
       return false if character_matrix.any? { |row| row.size != CHAR_WIDTH }
 
-      true
+      (character_matrix.flatten - VALID_CHARS).empty?
     end
 
     class ArgumentError < ::ArgumentError; end

@@ -76,6 +76,28 @@ describe BankOCR::InputCharacter do
       end
     end
 
-    it 'consists of pipes, underscores, and spaces'
+    context 'character matrix content' do
+      it 'returns true if consists of pipes, underscores, and spaces' do
+        character_matrix = [
+          [' ', '_', ' '],
+          ['|', '_', '|'],
+          [' ', '_', '|']
+        ]
+
+        input_character = described_class.new(character_matrix)
+        expect(input_character.valid?).to be true
+      end
+
+      it 'returns false if character_matrix has an unexpected character' do
+        character_matrix = [
+          [' ', '_', ' '],
+          ['x', '_', '|'],
+          [' ', 'y', 'z']
+        ]
+
+        input_character = described_class.new(character_matrix)
+        expect(input_character.valid?).to be false
+      end
+    end
   end
 end
