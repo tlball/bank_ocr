@@ -19,7 +19,5 @@ module BankOCR
     def to_i
       CharacterMapping.value(character_matrix)
     end
-
-    class ArgumentError < ::ArgumentError; end
   end
 end

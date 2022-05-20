@@ -18,14 +18,14 @@ describe BankOCR::InputCharacter do
     character_matrix = nil
 
     expect { described_class.new(character_matrix) }
-      .to raise_error(BankOCR::InputCharacter::ArgumentError, 'character_matrix must be an Array')
+      .to raise_error(BankOCR::ArgumentError, 'character_matrix must be an Array')
   end
 
   it 'raises an error if character_matrix is not an Array' do
     character_matrix = 'character matrix'
 
     expect { described_class.new(character_matrix) }
-      .to raise_error(BankOCR::InputCharacter::ArgumentError, 'character_matrix must be an Array')
+      .to raise_error(BankOCR::ArgumentError, 'character_matrix must be an Array')
   end
 
   describe 'to_i' do
