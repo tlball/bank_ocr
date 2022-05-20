@@ -23,6 +23,10 @@ module BankOCR
       (character_matrix.flatten - VALID_CHARS).empty?
     end
 
+    def to_i
+      CharacterMapping.value(character_matrix)
+    end
+
     class ArgumentError < ::ArgumentError; end
   end
 end

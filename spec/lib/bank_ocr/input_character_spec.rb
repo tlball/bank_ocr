@@ -100,4 +100,24 @@ describe BankOCR::InputCharacter do
       end
     end
   end
+
+  describe 'to_i' do
+    it 'returns the corresponding value for the InputCharacter' do
+      input_character = described_class.new(BankOCR::CharacterMapping::NINE)
+
+      expect(input_character.to_i).to eq(9)
+    end
+
+    it 'returns nil if no value is found' do
+      character_matrix = [
+        ['_', '_', '_'],
+        ['_', '_', '_'],
+        ['_', '_', '_']
+      ]
+
+      input_character = described_class.new(character_matrix)
+
+      expect(input_character.to_i).to be nil
+    end
+  end
 end
