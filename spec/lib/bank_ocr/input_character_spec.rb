@@ -29,7 +29,30 @@ describe BankOCR::InputCharacter do
   end
 
   describe 'valid?' do
-    it 'has a width of 3'
+    context 'character matrix width' do
+      it 'returns true if the width for all rows is 3' do
+        character_matrix = [
+          [' ', '_', ' '],
+          ['|', '_', '|'],
+          [' ', '_', '|']
+        ]
+
+        input_character = described_class.new(character_matrix)
+        expect(input_character.valid?).to be true
+      end
+
+      it 'returns false if the width of at least 1 row is not 3' do
+        character_matrix = [
+          [' ', '_', ' '],
+          ['|', '_'],
+          [' ', '_', '|']
+        ]
+
+        input_character = described_class.new(character_matrix)
+        expect(input_character.valid?).to be false
+      end
+    end
+
     it 'has a height of 3'
     it 'consists of pipes, underscores, and spaces'
   end

@@ -4,6 +4,8 @@ module BankOCR
   # This class represents characters read in from the input file and ensures they
   # are valid
   class InputCharacter
+    CHAR_WIDTH = 3
+
     attr_reader :character_matrix
 
     def initialize(character_matrix)
@@ -13,7 +15,9 @@ module BankOCR
     end
 
     def valid?
-      false
+      return false if character_matrix.any? { |row| row.size != CHAR_WIDTH }
+
+      true
     end
 
     class ArgumentError < ::ArgumentError; end
