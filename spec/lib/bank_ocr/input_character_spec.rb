@@ -53,7 +53,29 @@ describe BankOCR::InputCharacter do
       end
     end
 
-    it 'has a height of 3'
+    context 'character matrix height' do
+      it 'returns true if the height for all rows is 3' do
+        character_matrix = [
+          [' ', '_', ' '],
+          ['|', '_', '|'],
+          [' ', '_', '|']
+        ]
+
+        input_character = described_class.new(character_matrix)
+        expect(input_character.valid?).to be true
+      end
+
+      it 'returns false if the height of at least 1 row is not 3' do
+        character_matrix = [
+          [' ', '_', ' '],
+          ['|', '_', '|']
+        ]
+
+        input_character = described_class.new(character_matrix)
+        expect(input_character.valid?).to be false
+      end
+    end
+
     it 'consists of pipes, underscores, and spaces'
   end
 end
