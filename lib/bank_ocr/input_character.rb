@@ -16,13 +16,6 @@ module BankOCR
       @character_matrix = character_matrix
     end
 
-    def valid?
-      return false if character_matrix.size != CHAR_HEIGHT
-      return false if character_matrix.any? { |row| row.size != CHAR_WIDTH }
-
-      (character_matrix.flatten - VALID_CHARS).empty?
-    end
-
     def to_i
       CharacterMapping.value(character_matrix)
     end
